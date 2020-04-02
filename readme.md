@@ -22,6 +22,9 @@
 + 继承
 + 函数式编程
 + 深拷贝
++ 数组去重
+
+### Typescript
 
 ## CSS
 
@@ -70,6 +73,7 @@
 + Loader
 + Plugins
 + 热更新
++ Source-map
 
 ## Http
 
