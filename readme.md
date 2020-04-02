@@ -14,8 +14,15 @@
 + 执行上下文
 + 作用域
 + this
-+ es6
 + event loop
++ 垃圾回收
+
+### ES6
+
++ 箭头函数
++ Promise
++ Class
++ Proxy
 
 ### 应用
 
@@ -24,14 +31,30 @@
 + 深拷贝
 + 数组去重
 
-### Typescript
+### 实践
+
++ 文件上传
++ 输入url的过程
+
+##  Typescript
+
++ 泛型
++ type、interface
 
 ## CSS
 
 + BFC
 + [三栏布局](./css/layout.md)
 + Flex
++ Grid
 + 预处理器
+
++ 移动端适配
+
+## HTML
+
++ canvas
++ Svg
 
 ## React
 
@@ -70,10 +93,24 @@
 
 ## Webpack
 
-+ Loader
-+ Plugins
+### Loader
+
++ 常用loader
++ 实现loader
+
+### Plugins
+
++ 常用Plugins
++ 实现plugin
+
+### 其他
+
 + 热更新
 + Source-map
+
+### Babel
+
+
 
 ## Http
 
@@ -99,6 +136,15 @@
 
 
 
+## 数据结构
+
++ 栈
++ 队列
++ 链表
++ 树
+
+
+
 ## 设计模式
 
 + 单例模式
@@ -112,6 +158,8 @@
 + 动态规划
 
 ## Nginx
+
++ 配置
 
 + 负载均衡
 
@@ -139,3 +187,8 @@
 + Antd
 + Element-UI
 
+
+
+## 思维导图
+
+![](/Users/zzh/Learning/shortcut/Front-End.png)
