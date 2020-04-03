@@ -6,9 +6,6 @@
 
 ### 原理
 
-+ new
-+ instanceof
-+ call、apply、bind
 + 原型链
 + 闭包
 + 执行上下文
@@ -16,6 +13,7 @@
 + this
 + event loop
 + 垃圾回收
++ 隐式转换
 
 ### ES6
 
@@ -24,17 +22,24 @@
 + Class
 + Proxy
 
-### 应用
+### 实现
 
 + 继承
-+ 函数式编程
++ 柯里化
 + 深拷贝
 + 数组去重
++ new
++ Instanceof
++ call、apply、bind
++ 处理url
++ 数字千分位
++ 大数相乘
 
 ### 实践
 
 + 文件上传
 + 输入url的过程
++ 函数式编程
 
 ##  Typescript
 
@@ -48,8 +53,8 @@
 + Flex
 + Grid
 + 预处理器
-
 + 移动端适配
++ 回流重绘
 
 ## HTML
 
@@ -119,12 +124,14 @@
 + https
 + http2
 + TCP、UDP
++ dns
 
 ## 安全
 
 + XSS
 + CSRF
 + 跨域
++ npm包的安全
 
 ## 性能
 
@@ -156,6 +163,7 @@
 
 + 排序算法
 + 动态规划
++ 深度优先、广度优先
 
 ## Nginx
 
