@@ -25,7 +25,7 @@ let person = new Person()
 
 person实例输出如下
 
-<img src="../shortcut/js/new/1.png" alt="person console result" style="zoom:50%;" />
+![person console](../shortcut/js/new/2.png)
 
 
 
@@ -40,12 +40,12 @@ let person2 = new Person2()
 
 person2实例输出如下
 
-<img src="../shortcut/js/new/2.png" alt="person2 console result" style="zoom:50%;" />
+![person2 console](../shortcut/js/new/2.png)
 
 
 
-如果了解过原型，很容易知道一个实例的 `__proto__` 指向创建这个实例的构造函数的原型。即如果有一个构造函数A生成了一个实例a，那即满足 `a.__proto__ === A.prototype` ，而A.prototype里又有一个属性 `constructor` 又指回A，即`A.prototype.constructor=== A`。
-在上面的实例一中，我们可以看到`person.__proto__`为Person，说明是进行了原型的关联，而实例二中得到的是构造函数Person2里返回的对象`{hello: 'world'}`。这些现象都符合MDN对new运算符的描述。
+如果了解过原型，很容易知道一个实例的 `__proto__` 指向创建这个实例的构造函数的原型。即如果有一个构造函数A生成了一个实例a，那即满足 `a.__proto__ === A.prototype` ，而A.prototype里又有一个属性 `constructor` 又指回A，即`A.prototype.constructor === A`，也可看成`a.__proto__.constructor === A`。
+在上面的实例一中，我们可以看到`person.__proto__.constructor`为Person，说明是进行了原型的关联，而实例二中得到的是构造函数Person2里返回的对象`{hello: 'world'}`。这些现象都符合MDN对new运算符的描述。
 
 ## 实现
 
