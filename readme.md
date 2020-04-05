@@ -28,7 +28,7 @@
 + 柯里化
 + 深拷贝
 + 数组去重
-+ new
++ [new](./js/new.md)
 + Instanceof
 + call、apply、bind
 + 处理url
