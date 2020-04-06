@@ -29,7 +29,7 @@
 + 深拷贝
 + 数组去重
 + [new](./js/new.md)
-+ Instanceof
++ [instanceof](./js/instanceof.md)
 + call、apply、bind
 + 处理url
 + 数字千分位
