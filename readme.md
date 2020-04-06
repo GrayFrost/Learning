@@ -60,6 +60,7 @@
 
 + canvas
 + Svg
++ seo
 
 ## React
 
