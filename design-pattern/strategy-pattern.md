@@ -23,25 +23,25 @@ class Person {
 
 class Child extends Person {
     constructor() {
-        super('child');
+        super('小孩');
     }
 }
 
 class Man extends Person {
     constructor() {
-        super('man');
+        super('男人');
     }
 }
 
 class Woman extends Person {
     constructor() {
-        super('woman');
+        super('女人');
     }
 }
 
 class Old extends Person {
     constructor() {
-        super('old');
+        super('老人');
     }
 }
 
@@ -79,10 +79,10 @@ list.join('woman'); // 一个女士排队
 
 list.show();
 // 输出如下:
-// 我是man
-// 我是child
-// 我是old
-// 我是woman
+// 我是男人
+// 我是小孩
+// 我是老人
+// 我是女人
 ```
 
 这个例子可能看起来很长，但还是很简单的内容。主要功能是实现一个排队的类，然后显示排队中的人的类型。
