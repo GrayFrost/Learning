@@ -130,6 +130,8 @@
 * TCP、UDP
 * DNS
 * WebSocket
+* ajax、fetch、axios
+* 抓包工具
 
 ## 安全
 
@@ -164,6 +166,7 @@
 
 * 排序算法
 * 动态规划
+* 贪心算法
 * 深度优先、广度优先
 
 ## Nginx
