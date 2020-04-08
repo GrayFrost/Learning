@@ -43,6 +43,28 @@ let b = Single.getInstance();
 console.log(a === b); // true
 ```
 
+### 代理实现
+有人可能就是不想要调用`getInstance`，而使用new的方式，那么我们就使用代理的方式。
+``` javascript
+function _Single(){
+}
+
+let Single = (function(){
+  let instance;
+  return function(){
+    if(!instance){
+      instance = new _Single();
+    }
+    return instance;
+  }
+})()
+
+let a = new Single();
+let b = new Single();
+console.log(a === b); // true
+```
+核心思想是不变的。
+
 ## 应用
 我们抛弃网上常举比如什么弹窗啊的例子。自己想一个来实现。
 比如我们有一个系统，系统里只有一个叫回收站的地方。好，开始。
