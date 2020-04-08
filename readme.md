@@ -157,7 +157,7 @@
 
 ## 设计模式
 
-* 单例模式
+* [单例模式](./design-pattern/singleton-pattern.md)
 * [策略模式](./design-pattern/strategy-pattern.md)
 * 适配器模式
 * 装饰器模式
