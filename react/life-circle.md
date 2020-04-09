@@ -1,0 +1,17 @@
+# 生命周期
+
+constructor
+componentWillMount
+componentDidMout
+componentWillUnmount
+render
+componentWillReceiveProps
+shouldComponentWillUpdate
+componentDidUpdate
+
+getDerivedStateFromProps
+getSnapShotBeforeUpdate
+
+异常
+setState涉及到的生命周期
+16新的生命周期 为什么要废弃一些原来的

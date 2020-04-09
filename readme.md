@@ -147,6 +147,7 @@
 * 懒加载
 * 服务端渲染
 * 骨架屏
+* 虚拟列表
 
 ## 数据结构
 
@@ -157,6 +158,7 @@
 
 ## 设计模式
 
+* 工厂模式
 * [单例模式](./design-pattern/singleton-pattern.md)
 * [策略模式](./design-pattern/strategy-pattern.md)
 * 适配器模式
