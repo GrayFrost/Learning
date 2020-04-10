@@ -90,7 +90,7 @@ export default function App(){
 ## useContext
 ## useReducer
 ## useCallback
-、首先我们来看一个例子：  
+首先我们来看一个例子：  
 ``` javascript
 import React from "react";
 const { useState } = React;
@@ -128,8 +128,7 @@ export default function MemoDemo() {
     );
 }
 ```
-
-但当我们需要传递props时，使用的memo失效。
+上面的代码完成后，可以发现更新count，子组件不会重新渲染了。但当我们需要传递props时，使用的memo失效。为啥？
 ``` javascript
 import React, { memo } from "react";
 const { useState } = React;
@@ -162,7 +161,7 @@ export default function MemoDemo() {
 }
 
 ```
-可以看到，我们传递给子组件的props是status和onClick。但我们点击count更新时，控制台继续打印出子组件的内容。而且当我们不传递onClick给子组件时，会发现子组件并不会更新。可以判断出是这个传递的onClick造成了子组件的更新。因为count更新了，使得count所在的组件进行了更新，而传递给onClick的方法也进行了更新，虽然它还是和原来长的一样，但其实是一个新的函数，导致memo也判断它传递onClick这个props是新的，所以我们需要使用到我们的useCallback。
+可以看到，我们传递给子组件的props是status和onClick。但我们点击count更新时，控制台继续打印出子组件的内容。而且当我们不传递onClick给子组件时，会发现子组件并不会更新。可以判断出是这个传递的onClick造成了子组件的更新。因为count更新了，使得count所在的组件进行了更新，而传递给onClick的方法也进行了更新，虽然它还是和原来长的一样，但其实是一个新的函数，导致memo的浅比较也判断它传递onClick这个props是新的，所以我们需要使用到我们的useCallback。
 
 ### 使用
 ``` javascript
@@ -204,7 +203,7 @@ export default function MemoDemo() {
             <label>{count}</label>
             <button onClick={() => setCount(count + 1)}>add</button>
             <ChildMemo
-                status={{status, color: status %2 === 0 ? 'orange': 'pink'}}
+                status={{status, color: status % 2 === 0 ? 'orange': 'pink'}}
                 onClick={useCallback((newStatus) => setStatus(newStatus), [])}
             />
         </section>
@@ -232,7 +231,7 @@ const memoizedValue = useMemo(() => value, deps);
 />
 ```
 只有status更改时，才传递一个新的对象，否则父组件更新时，仍旧使用原来缓存的对象。  
-`useMemo`可以用于一些比较复杂的大型计算。我们可以通过`useMemo`指定依赖项，使得组件内有某个不想关的状态更新而导致组件重新渲染时，这部分已经计算的功能是使用缓存的结果，因为我们指定了依赖项。举个例子
+`useMemo`可以用于一些比较复杂的大型计算。我们可以通过`useMemo`指定依赖项，使得组件内有某个不相关的状态更新而导致组件重新渲染时，这部分已经计算的功能是使用缓存的结果，因为我们指定了依赖项。举个例子
 ``` javascript
 export default function MemoDemo() {
     const [count, setCount] = useState(0);
@@ -246,10 +245,10 @@ export default function MemoDemo() {
     );
 }
 ```
-当我们更新status以外的state时，复杂的计算不会重新触发，只有当我们更新了status时，才会重新计算。
+当我们更新status以外的state时，整个组件会重新渲染，但复杂的计算不会重新触发，只有当我们更新了status时，才会重新计算。
 
 ### 总结
-综合上一个小结的useCallback一起总结。很明显useCallback和useMemo都是针对引用类型来说的，函数和对象都是引用类型的值，如果你对一个简单的数字类型变量或字符串变量执行useMemo，那是毫无意义的。这两者的功能都是缓存上一次的引用。 当我们需要传递一个跟父组件状态有关的数据给子组件或需要进行一些密集型计算，考虑使用useMemo。当需要把父组件的一个函数传给子组件时，考虑useCallback。为什么说考虑，因为使用这些方法也要开销的，还是要谨慎使用。
+综合上一个小节的useCallback一起总结。很明显useCallback和useMemo都是针对引用类型来说的，函数和对象都是引用类型的值，如果你对一个简单的数字类型变量或字符串变量执行useMemo，那是毫无意义的。这两者的功能都是缓存上一次的引用。 当我们需要传递一个跟父组件状态有关的数据给子组件或需要进行一些密集型计算，考虑使用useMemo。当需要把父组件的一个函数传给子组件时，考虑useCallback。为什么说考虑，因为使用这些方法也要开销的，还是要谨慎使用。
 
 
 ## useRef
