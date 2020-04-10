@@ -85,17 +85,157 @@ export default function App(){
 当然，react hooks内部使用了链表的方式来维护数据，并且也不是像我们这么简单粗暴的渲染整个入口页面。
 
 
-### useEffect
+## useEffect
 闭包陷阱
-### useContext
-### useReducer
-### useCallback
-### useMemo
-### useRef
-### useImperativeHandle
-### useLayoutEffect
+## useContext
+## useReducer
+## useCallback
+、首先我们来看一个例子：  
+``` javascript
+import React from "react";
+const { useState } = React;
+const Child = () => {
+    console.log("子组件");
+    return <div>子组件</div>;
+};
+
+export default function MemoDemo() {
+    const [count, setCount] = useState(0);
+    return (
+        <section>
+            <h3>usememo usecallback</h3>
+            <label>{count}</label>
+            <button onClick={() => setCount(count + 1)}>add</button>
+            <Child />
+        </section>
+    );
+}
+
+```
+当我们点击按钮更新状态时，发现控制台继续打印了子组件的内容，然而我们这个组件没有用到父组件的状态，我们不希望它更新。我们首先可以使用`React.memo`来缓存。
+``` diff
++ const ChildMemo = memo(Child);
+
+export default function MemoDemo() {
+    const [count, setCount] = useState(0);
+    return (
+        <section>
+            <h3>usememo usecallback</h3>
+            <label>{count}</label>
+            <button onClick={() => setCount(count + 1)}>add</button>
++           <ChildMemo />
+        </section>
+    );
+}
+```
+
+但当我们需要传递props时，使用的memo失效。
+``` javascript
+import React, { memo } from "react";
+const { useState } = React;
+const Child = ({ status, onClick }) => {
+    console.log("子组件");
+    return (
+        <div>
+            子组件status{status}
+            <button onClick={() => onClick(status + 5)}>add</button>
+        </div>
+    );
+};
+
+const ChildMemo = memo(Child);
+
+export default function MemoDemo() {
+    const [count, setCount] = useState(0);
+    const [status, setStatus] = useState(10);
+    return (
+        <section>
+            <h3>usememo usecallback</h3>
+            <label>{count}</label>
+            <button onClick={() => setCount(count + 1)}>add</button>
+            <ChildMemo
+                status={status}
+                onClick={(newStatus) => setStatus(newStatus)}
+            />
+        </section>
+    );
+}
+
+```
+可以看到，我们传递给子组件的props是status和onClick。但我们点击count更新时，控制台继续打印出子组件的内容。而且当我们不传递onClick给子组件时，会发现子组件并不会更新。可以判断出是这个传递的onClick造成了子组件的更新。因为count更新了，使得count所在的组件进行了更新，而传递给onClick的方法也进行了更新，虽然它还是和原来长的一样，但其实是一个新的函数，导致memo也判断它传递onClick这个props是新的，所以我们需要使用到我们的useCallback。
+
+### 使用
+``` javascript
+useCallback(fn, deps)
+```
+更新上面的代码：
+``` diff
+<ChildMemo
+    status={status}
++   onClick={useCallback((newStatus) => setStatus(newStatus), [])}
+/>
+```
+因为这个例子里我们不依赖其他参数，在第一次传递之后，后续就不再生成新的函数。那memo经过浅比较之后，发现是同一个函数，就不会重新渲染啦。
+
+## useMemo
+在上面的例子里，我们传递给子组件的status是一个简单的数字，现在我们改动一下，改成对象。
+
+``` javascript
+import React, { memo } from "react";
+const { useState, useCallback } = React;
+const Child = ({ status, onClick }) => {
+    console.log("子组件");
+    return (
+        <div>
+            <label style={{color: status.color}}>子组件status {status.status}</label>
+            <button onClick={() => onClick(status.status + 1)}>add</button>
+        </div>
+    );
+};
+
+const ChildMemo = memo(Child);
+
+export default function MemoDemo() {
+    const [count, setCount] = useState(0);
+    const [status, setStatus] = useState(10);
+    return (
+        <section>
+            <h3>usememo usecallback</h3>
+            <label>{count}</label>
+            <button onClick={() => setCount(count + 1)}>add</button>
+            <ChildMemo
+                status={{status, color: status %2 === 0 ? 'orange': 'pink'}}
+                onClick={useCallback((newStatus) => setStatus(newStatus), [])}
+            />
+        </section>
+    );
+}
+
+```
+发现点击count，传递的status也是一个新的对象，原理就跟上面的callback一样，而我们希望的是只有当status改变的时候，传递的才是一个新的对象。所以使用useMemo。
+### 使用
+``` javascript
+const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
+```
+更改上面的代码：
+``` diff
+<ChildMemo
++   status={useMemo(
++       () => ({
++           status,
++           color: status % 2 === 0 ? "orange" : "pink",
++       }),
++       [status]
++   )}
+    onClick={useCallback((newStatus) => setStatus(newStatus), [])}
+/>
+```
+
+## useRef
+## useImperativeHandle
+## useLayoutEffect
 * 与`useEffect`的区别
-### useDebugValue
+## useDebugValue
 
 ## 自定义
 
