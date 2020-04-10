@@ -175,7 +175,7 @@ useCallback(fn, deps)
 +   onClick={useCallback((newStatus) => setStatus(newStatus), [])}
 />
 ```
-因为这个例子里我们不依赖其他参数，在第一次传递之后，后续就不再生成新的函数。那memo经过浅比较之后，发现是同一个函数，就不会重新渲染啦。
+因为这个例子里我们不依赖其他参数，在第一次传递之后，后续就不再生成新的函数。那memo经过浅比较之后，发现是同一个函数，就不会重新渲染啦。通常的做法就是后面的依赖项写个空数组，当然如果你的需求里是有一些其依赖则另当别论，只是说明一般的写法。
 
 ## useMemo
 在上面的例子里，我们传递给子组件的status是一个简单的数字，现在我们改动一下，改成对象。
@@ -215,8 +215,9 @@ export default function MemoDemo() {
 发现点击count，传递的status也是一个新的对象，原理就跟上面的callback一样，而我们希望的是只有当status改变的时候，传递的才是一个新的对象。所以使用useMemo。
 ### 使用
 ``` javascript
-const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
+const memoizedValue = useMemo(() => value, deps);
 ```
+注意useMemo也是接收函数和依赖项数组，只是这个函数有返回值。  
 更改上面的代码：
 ``` diff
 <ChildMemo
@@ -230,6 +231,26 @@ const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
     onClick={useCallback((newStatus) => setStatus(newStatus), [])}
 />
 ```
+只有status更改时，才传递一个新的对象，否则父组件更新时，仍旧使用原来缓存的对象。  
+`useMemo`可以用于一些比较复杂的大型计算。我们可以通过`useMemo`指定依赖项，使得组件内有某个不想关的状态更新而导致组件重新渲染时，这部分已经计算的功能是使用缓存的结果，因为我们指定了依赖项。举个例子
+``` javascript
+export default function MemoDemo() {
+    const [count, setCount] = useState(0);
+    const [status, setStatus] = useState(10);
+    const abc = useMemo(() => {
+      // 经过复杂计算后返回值
+      return '一个超级复杂的计算后返回的值'
+    },[status]);
+    return (
+        <div />
+    );
+}
+```
+当我们更新status以外的state时，复杂的计算不会重新触发，只有当我们更新了status时，才会重新计算。
+
+### 总结
+综合上一个小结的useCallback一起总结。很明显useCallback和useMemo都是针对引用类型来说的，函数和对象都是引用类型的值，如果你对一个简单的数字类型变量或字符串变量执行useMemo，那是毫无意义的。这两者的功能都是缓存上一次的引用。 当我们需要传递一个跟父组件状态有关的数据给子组件或需要进行一些密集型计算，考虑使用useMemo。当需要把父组件的一个函数传给子组件时，考虑useCallback。为什么说考虑，因为使用这些方法也要开销的，还是要谨慎使用。
+
 
 ## useRef
 ## useImperativeHandle
