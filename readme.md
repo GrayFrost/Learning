@@ -72,7 +72,7 @@
 ### 原理
 
 * 生命周期
-* hooks
+* [hooks](./react/hooks.md)
 * Virtual Dom
 * Diff
 * React Fiber
