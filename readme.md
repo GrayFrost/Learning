@@ -48,8 +48,8 @@
 
 ##  Typescript
 
-* 泛型
-* type、interface
+* 使用
+* [tsconfig.json](./ts/tsconfig.md)
 
 ## CSS
 
@@ -103,6 +103,9 @@
 ### Vuex
 
 ## Webpack
+
+## 项目环境搭建
+搭建一个完整的react项目，在搭建过程中了解使用到的各种loader和plugin，以及对应配置
 
 ### Loader
 

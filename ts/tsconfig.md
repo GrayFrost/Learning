@@ -1,5 +1,18 @@
 # tsconfig.json
-tsconfig.json配置
+tsconfig.json配置如下：
+``` json
+{
+  "compilerOptions": {},
+  "extends": "",
+  "files": [],
+  "include": [],
+  "exclude": []
+}
+```
+最重要的是`compilerOptions`，其他的可以在有需要时才写。
+
+## compilerOptions
+
 
 target 将ts代码编译成指定版本的js代码
 
@@ -49,3 +62,4 @@ allowSyntheticDefaultImports
 
 allowJs 比如一个ts文件引用一个js文件时，会报错。设置这个true告诉编译器将这个js文件的方法和变量都设置成any。ts就能识别js了
 
+[更多详细配置](https://www.tslang.cn/docs/handbook/compiler-options.html)
