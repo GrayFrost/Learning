@@ -164,7 +164,7 @@
 * 工厂模式
 * [单例模式](./design-pattern/singleton-pattern.md)
 * [策略模式](./design-pattern/strategy-pattern.md)
-* 适配器模式
+* [适配器模式](./design-pattern/adaptor-pattern.md)
 * 装饰器模式
 
 ## 算法
