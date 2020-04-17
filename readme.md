@@ -70,7 +70,7 @@
 
 ### 原理
 
-* 生命周期
+* [生命周期](./react/life-circle.md)
 * [hooks](./react/hooks.md)
 * Virtual Dom
 * Diff
