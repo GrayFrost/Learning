@@ -2,42 +2,28 @@
 
 ## 环境搭建
 
+对于环境，我们分为两种情况。一种是使用脚手架（以create-react-app）为例，另一种是我们自定义项目。
+
 ### create-react-app
 
-[create-react-app 添加typescript](https://www.html.cn/create-react-app/docs/adding-typescript/)
+当我们是使用cra生成一个全新的项目，可以
 
-按照步骤，添加typescript相关依赖后，将js改成tsx。重启项目，发现根目录下会自动生成 `tsconfig.json` 文件，内容如下：
-
-``` json
-{
-  "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react"
-  },
-  "include": [
-    "src"
-  ]
-}
-
+``` shell
+npx create-react-app my-app --typescript
 ```
 
+当我们是从已有cra创建的react项目中添加typescript时，
+
+``` shell
+npm install --save typescript @types/node @types/react @types/react-dom @types/jest
+```
+
+添加typescript相关依赖后，我们将项目中的js文件改为 `.tsx` 文件，重启项目，发现根目录下会自动生成 `tsconfig.json` 文件。
+可以查看：[create-react-app 添加typescript](https://www.html.cn/create-react-app/docs/adding-typescript/)
+
 ### 自定义项目
+
+很多时候，我们可能会自己搭建一个react环境的项目。
 
 #### 安装typescript
 
@@ -47,59 +33,51 @@ npm install typescript -D
 
 #### 配置webpack
 
-Babel7，直接使用babel-loader。babel-loader的匹配正则修改；resolve extension 添加后缀名.ts .tsx 
+Babel7，直接使用babel-loader（前提：已安装）。
 
-使用了babel-loader只是帮我对ts进行了转换，要使项目支持静态类型检测，需配置tsconfig.json
+``` shell
+npm install babel-loader @babel/core @babel/preset-env @babel/preset-react -D
+```
+
+babel-loader的匹配正则修改。
+
+``` javascript
+{
+    test: /\.(js|jsx|ts|tsx)$/,
+    use: "babel-loader",
+},
+```
+
+resolve的extension选项添加后缀名`.ts`, `.tsx `。
+``` javascript
+extensions: [".js", ".jsx", ".ts", ".tsx"],
+```
+
+然后安装
+``` shell
+npm install --save-dev @babel/preset-typescript
+npm install --save-dev @babel/preset-typescript @babel/preset-env @babel/plugin-proposal-class-properties @babel/plugin-proposal-object-rest-spread
+```
+再配置`babel.config.js`（前提：新建babel.config.js）
+``` javascript
+module.exports = {
+    presets: [
+        "@babel/preset-env",
+        "@babel/preset-typescript",
+        "@babel/preset-react",
+    ],
+    plugins: [
+        "@babel/proposal-class-properties",
+        "@babel/proposal-object-rest-spread",
+    ],
+};
+```
+
+使用了babel-loader只是帮我对ts进行了转换，要使项目支持静态类型检测，需配置tsconfig.json。
 
 #### 添加tsconfig.json
 
-了解配置内容
-
-##### target
-
-target 将ts代码编译成指定版本的js代码
-
-比如设置成es3，箭头函数则会被编译成正常的function
-
-esnext 因为es每年都有一个版本，设置成这个表示支持最新的es
-
-##### module
-
-module 模块。我们知道前端模块化有很多种方式。 amd commonjs umd es6等
-
-##### jsx
-
-后缀名tsx的是使用typescript的jsx
-
-##### removeComments
-
-removeComments 编译时删除注释
-
-##### noImplicitAny
-
-隐式any，当编译器无法判断类型时，将其判断为any，会报错
-
-##### strictNullChecks
-
-检测null, 比如使用数组的find方法可能没有对应项
-
-##### esModuleInterop
-
-我们import React from 'react'; 发现报错
-
-设置这个属性true
-
-##### allowSyntheticDefaultImports
-
-同上面引用报错，设置allowSyntheticDefaultImports 为true
-
-同时写成import * as React from 'react'; 
-
-##### allowJs 
-
-比如一个ts文件引用一个js文件时，会报错。设置这个true告诉编译器将这个js文件的方法和变量都设置成any。ts就能识别js了
-
-[更多详细配置](https://www.tslang.cn/docs/handbook/compiler-options.html)
+(配置内容)[./tsconfig.md]
 
 ## 使用
 
