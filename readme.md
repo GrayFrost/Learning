@@ -28,6 +28,9 @@
 * 输入url的过程
 * 函数式编程
 
+### Typescript
+* [使用](./ts/use.md)
+
 ## 代码实现
 
 * 继承
@@ -46,10 +49,6 @@
 * JSON.stringify和JSON.parse
 * 懒加载
 
-##  Typescript
-
-* 使用
-* [tsconfig.json](./ts/tsconfig.md)
 
 ## CSS
 
