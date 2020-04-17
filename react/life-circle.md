@@ -1,6 +1,6 @@
 # 生命周期
 新建一个用于测试生命周期的组件
-```
+```react
 import React from 'react';
 
 export default class Life extends React.Component {
@@ -59,7 +59,7 @@ export default class Life extends React.Component {
 * componentDidUpdate
 
 ## 16
-```
+```react
 import React from 'react';
 
 export default class Life extends React.Component {
