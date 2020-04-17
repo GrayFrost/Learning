@@ -29,7 +29,7 @@
 * 函数式编程
 
 ### Typescript
-* [使用](./ts/use.md)
+* [使用](./js/typescript.md)
 
 ## 代码实现
 
@@ -203,5 +203,5 @@
 
 ## 思维导图
 
-![思维导图](./shortcut/Front-End2.png)
+![思维导图](./shortcut/Front-End3.png)
 
