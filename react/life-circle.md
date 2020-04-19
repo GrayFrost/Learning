@@ -122,9 +122,9 @@ export default class Life extends React.Component {
 ## 常见问题
 * 请求放在哪个生命周期？  
 请求通常放在`componentDidMount`中。在服务端渲染时，`componentWillMount`会在客户端和服务端各执行一次，所以会触发两次请求。
-在16以后，对生命周期做了调整以后，componentWillMount可能会触发多次。
+在16以后，对生命周期做了调整以后，`componentWillMount`可能会触发多次。
 
 * 16新的生命周期 为什么要废弃一些原来的？  
-componentWillMount的功能完全可以用constructor和componentDidMount代替。componentWillReceiveProps和componentWillUpdate在一次更新中可能会出现多次调用的情况，而componentDidUpdate在一次更新中只会调用一次。
+`componentWillMount`的功能完全可以用`constructor`和`componentDidMount`代替。`componentWillReceiveProps`和`componentWillUpdate`在一次更新中可能会出现多次调用的情况，而`componentDidUpdate`在一次更新中只会调用一次。
 
 生命周期的调整，都跟底层的react fiber有关。
