@@ -88,6 +88,69 @@ export default function App(){
 ## useEffect
 闭包陷阱
 ## useContext
+在使用useContext之前，我们先看一下React Context的使用。React Context可以帮助我们进行跨层级组件之间的数据传递，可有效避免在每一个层级之间的props手动传递。
+``` jsx
+const {Provider, Consumer} = React.createContext(defaultValue);
+
+<Provider value={/*共享的数据*/}>
+    /*里面可以渲染对应的内容*/
+</Provider>
+
+<Consumer>
+  {value => /*根据上下文  进行渲染相应内容*/}
+</Consumer>
+```
+首先将父组件用provider包裹，然后子组件或孙子组件用consumer包裹，确保consumer在provider里面。这样当孙子组件需要拿到最顶级组件的状态时，不用通过层层传递了。
+
+举个实际的例子吧
+``` jsx
+import React from "react";
+import ContextDemo from "./use-context";
+
+export const TestContext = React.createContext();
+export default function App() {
+  return (
+    <div className="App">
+      <TestContext.Provider
+        value={{
+          name: "bob"
+        }}
+      >
+        <ContextDemo />
+      </TestContext.Provider>
+    </div>
+  );
+}
+
+```
+这里直接用子组件来演示其实不太合理，应该用孙子组件的（懒，没办法）。
+``` jsx
+import React from "react";
+import { TestContext } from "./App";
+export default function ContextDemo() {
+  return (
+    <TestContext.Consumer>
+      {value => {
+        return <div>context value: {value.name}</div>;
+      }}
+    </TestContext.Consumer>
+  );
+}
+
+```
+那接下来我们看一下使用useContext。
+``` jsx
+import React from "react";
+import { TestContext } from "./App";
+
+export default function ContextDemo() {
+  const value = React.useContext(TestContext);
+  return <div>context value: {value.name}</div>;
+}
+```
+可以看到，我们不再需要使用consumer来包裹组件，简化了代码。
+注意：Provider还是要写的，而且当context值变化时，使用了useContext的组件会重新渲染，需要进行合理的优化。
+
 ## useReducer
 ## useCallback
 首先我们来看一个例子：  
