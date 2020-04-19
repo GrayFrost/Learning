@@ -319,6 +319,35 @@ export default function MemoDemo() {
 ## useLayoutEffect
 * 与`useEffect`的区别
 ## useDebugValue
+> useDebugValue 用于在 React 开发者工具（如果已安装，在浏览器控制台 React 选项查看）中显示 自定义 Hook 的标签。
+> useDebugValue 接受一个格式化函数作为可选的第二个参数。该函数只有在 Hook 被检查时才会被调用。它接受 debug 值作为参数，并且会返回一个格式化的显示值
+直接看个例子
+``` jsx
+import React from "react";
+const { useState, useDebugValue } = React;
+function useOver(num) {
+  const [count, setCount] = useState(0);
+  useDebugValue(count > num ? "溢出" : "正常");
+  return [count, setCount];
+}
+export default function DebugDemo() {
+  const [count, setCount] = useOver(10);
+  return (
+    <div>
+      count:{count}
+      <button
+        onClick={() => {
+          setCount(count + 2);
+        }}
+      >
+        add
+      </button>
+    </div>
+  );
+}
+```
+我们自定义了一个hooks，主要是在更改count状态时，监测状态是否超出我们设置的值。当我们查看控制台时，可看到
+![](../shortcut/react/useDebugValue.png)
 
 ## 自定义
 
