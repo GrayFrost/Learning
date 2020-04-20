@@ -200,7 +200,7 @@ console.log(arr); // [ 5, 2, 3 ]
 console.log(res); // [ 5, 3 ]
 ```
 
-筛选出符合条件的数组内容。，不改变原数组。
+筛选出符合条件的数组内容。不改变原数组。
 
 ### every
 
@@ -259,9 +259,53 @@ console.log(res); // 10
 ## 扁平化
 flatten
 
-## 最大最小值
-max
-min
+## 最值
+###  排序
+
+``` javascript
+const arr = [5, 2, 3];
+const res = arr.sort((a, b) => a - b);
+const max = arr[arr.length - 1];
+const min = arr[0]
+console.log(max); // 5
+console.log(min); // 2
+```
+
+
+
+###假设
+
+``` javascript
+const arr = [5, 2, 3];
+let max = arr[0];
+for (let i = 1; i < arr.length; i++) {
+    if (arr[i] > max) {
+        max = arr[i];
+    }
+}
+console.log(max); // 5
+```
+
+假设第一项是最大的，然后逐个比较。最小值同理。
+
+###Math 
+
+> `Math.max()`函数返回一组数中的最大值  
+>
+> `Math.min()`函数返回一组数中的最小值
+
+``` javascript
+console.log(Math.max(1, 3, 2)); // 3
+```
+
+可以看出，`Math.max`接收的是一系列参数。所以我们可以借助`apply`或者扩展运算符`...`来实现
+
+``` javascript
+Math.max.apply(null, [1，3，2])；
+Math.max(...[1, 3, 2]);
+```
+
+`Math.min`同理。
 
 ## map实现
 
