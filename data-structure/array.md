@@ -158,29 +158,99 @@ console.log(res); // 1
 
 ### forEach
 
+``` javascript
+const arr = [5, 2, 3];
+const res = arr.forEach(i => {
+  if(i > 2){
+    console.log('hello' + i);
+  }
+});
+// hello5
+// hello3
+console.log(arr); // [ 5, 2, 3 ]
+console.log(res); // undefined
+```
 
+forEach没有返回值。
 
 ### map
+
+``` javascript
+const arr = [5, 2, 3];
+const res = arr.map(i => {
+  if(i > 2){
+    return 'hello' + i ;
+  }
+  return i;
+});
+console.log(arr); // [ 5, 2, 3 ]
+console.log(res); // [ 'hello5', 2, 'hello3' ]
+```
+
+不会改变原数组内容。
 
 
 
 ### filter
 
+``` javascript
+const arr = [5, 2, 3];
+const res = arr.filter((i) => i > 2);
+console.log(arr); // [ 5, 2, 3 ]
+console.log(res); // [ 5, 3 ]
+```
 
+筛选出符合条件的数组内容。，不改变原数组。
 
 ### every
 
+``` javascript
+const arr = [5, 2, 3];
+const res = arr.every((i) => i < 6);
+console.log(arr); // [ 5, 2, 3 ]
+console.log(res); // true
+```
 
+检测数组中的每一项是否符合条件，返回bool值
 
 ### some
+
+``` javascript
+const arr = [5, 2, 3];
+const res = arr.some((i) => i < 0);
+console.log(arr); // [ 5, 2, 3 ]
+console.log(res); // false
+```
+
+检测数组中的某些项是否符合条件，返回bool值
+
+### find
+
+``` javascript
+const arr = [5, 2, 3];
+const res = arr.find((i) => i > 2);
+console.log(arr); // [ 5, 2, 3 ]
+console.log(res); // 5
+```
+
+返回数组中符合条件的第一项。若要找多项，用`filter`吧。
 
 
 
 ### reduce
 
+``` javascript
+const arr = [5, 2, 3];
+const res = arr.reduce((prev, cur) => prev + cur, 0);
+console.log(arr); // [ 5, 2, 3 ]
+console.log(res); // 10
+```
+
+对数组的每一项从左到右进行累积计算。从右到左使用`reduceRight`。
 
 
-当然还有一些其他方法，比如lastIndexOf，reduceRight等，详细信息自行查看。
+
+当然还有一些其他方法，请自行查看。
 
 
 ## 去重
