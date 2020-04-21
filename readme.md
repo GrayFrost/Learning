@@ -160,7 +160,7 @@
 
 ## 设计模式
 
-* 工厂模式
+* [工厂模式](./design-patterh/factory-pattern.md)
 * [单例模式](./design-pattern/singleton-pattern.md)
 * [策略模式](./design-pattern/strategy-pattern.md)
 * [适配器模式](./design-pattern/adaptor-pattern.md)
@@ -176,7 +176,7 @@
 ## Nginx
 
 * 配置
-
+* 反向代理
 * 负载均衡
 
 ## Node
@@ -186,6 +186,9 @@
 ### Express
 
 ### Koa
+
+* 中间件
+* 洋葱圈模型
 
 ### npm
 
