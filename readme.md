@@ -164,7 +164,10 @@
 * [单例模式](./design-pattern/singleton-pattern.md)
 * [策略模式](./design-pattern/strategy-pattern.md)
 * [适配器模式](./design-pattern/adaptor-pattern.md)
-* 装饰器模式
+* [装饰者模式](./design-pattern/decorator-pattern.md)
+* 中介模式
+* 观察者模式
+* 代理模式
 
 ## 算法
 
