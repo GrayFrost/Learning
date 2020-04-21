@@ -80,7 +80,7 @@ npm install --save-dev @babel/plugin-proposal-decorators
 babel配置
 ``` diff
 plugins: [
-+   ["@babel/plugin-proposal-decorators", { legacy: true }+ ],
++   ["@babel/plugin-proposal-decorators", { legacy: true } ],
     "@babel/proposal-class-properties",
     "@babel/proposal-object-rest-spread",
 ],
