@@ -160,7 +160,7 @@
 
 ## 设计模式
 
-* [工厂模式](./design-pattern/factory-pattern.md)
+* [简单工厂模式](./design-pattern/factory-pattern.md)
 * [单例模式](./design-pattern/singleton-pattern.md)
 * [策略模式](./design-pattern/strategy-pattern.md)
 * [适配器模式](./design-pattern/adaptor-pattern.md)
