@@ -29,7 +29,7 @@
 * 函数式编程
 
 ### Typescript
-* [使用](./js/typescript.md)
+* [使用](./typescript/typescript.md)
 
 ## 代码实现
 
