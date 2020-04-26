@@ -51,3 +51,12 @@ kill -QUIT 主进程号
 ``` shell
 kill -TERM 主进程号
 ```
+
+
+
+nginx -t 检测语法是否正确
+
+``` shell
+vi /usr/local/etc/nginx/nginx.conf
+```
+

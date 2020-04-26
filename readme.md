@@ -6,7 +6,7 @@
 
 ### 原理
 
-* 原型链
+* [原型](./js/prototype.md)
 * 闭包
 * 执行上下文
 * 作用域
@@ -65,6 +65,8 @@
 * canvas
 * Svg
 * seo
+* 输入url的过程
+* 加载css和js，页面阻塞
 
 ## React
 
