@@ -220,7 +220,7 @@ console.log(obj1); // { hello: [ 'a', 'b', 'a' ] }
 console.log(obj2); // {} 在原型上
 ```
 
-
+细节需在控制台上打印出来。上面的例一种,obj2.hello相当于直接给对象添加一个属性，而例二和例三中obj2.hello.world和obj2.hello[1]都相当于先去obj2中查找对应的属性，发现没找到就去原型上找，因为是引用类型的值，所以最后导致修改了原型链上的值。
 
 ## Object.getPrototypeOf()
 

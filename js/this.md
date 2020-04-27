@@ -9,3 +9,9 @@ this的绑定有四种规则。
 ## 显式
 
 ## new
+
+## call
+
+## apply
+
+## bind

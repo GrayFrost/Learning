@@ -1,0 +1,4 @@
+# 获取样式的几种方式
+
+getComputedStyle
+getBoundingClientRect
