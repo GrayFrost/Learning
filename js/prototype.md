@@ -332,21 +332,166 @@ Object.assign(A.prototype, {
 a1.sayHi(); // hi
 ```
 
+![http://www.mollypages.org/tutorials/js.mp](../shortcut/js/prototype/3.jpg)
+最后，贴上这张经典的图。然后我们分析一遍。
+``` javascript
+// 构造函数Foo
+function Foo(){}
+const f1 = new Foo();
+const f2 = new Foo();
+// 构造函数Foo生成的实例的隐式指针指向它的构造函数的原型
+console.log(f1.__proto__ === Foo.prototype);
+// 构造函数的原型的constructor属性重新指向构造函数
+console.log(Foo.prototype.constructor === Foo);
+// 构造函数的原型也是一个对象，它的隐式指针指向Object.prototype
+console.log(Foo.prototype.__proto__ === Object.prototype);
 
+const o1 = new Object();
+const o2 = new Object();
+// 由Object构造函数生成的实例的隐式指针指向Object.prototype
+console.log(o1.__proto__ === Object.prototype);
+console.log(Object.prototype.constructor === Object);
 
+// Object是一个函数对象，它的原型是Function.prototype
+console.log(Object.__proto__ === Function.prototype);
+// Foo也是一个函数对象
+console.log(Foo.__proto__ === Function.prototype);
+// Function也是一个函数对象，注意的是Function.prototype和Function.__proto__都指向Function.prototype
+console.log(Function.__proto__ === Function.prototype);
+// 一切的尽头
+console.log(Object.prototype.__proto__ === null)
+```
 
 
 ## 继承
 
 ### 原型继承
 
-构造函数继承
+#### 原型链继承
 
-原型链继承
+```javascript
+function A() {
+    this.text = "hello world";
+    this.arr = ["a", "b", "c"];
+}
+const a = new A();
+function B() {}
+B.prototype = a;
+const b = new B();
+console.log(b.text); // hello world
+b.arr.push("d");
+// 注意下面输出的是a的属性值
+console.log(a.arr); // ['a', 'b', 'c', 'd'] 
+```
 
-组合继承
+使用原型链继承存在的问题是当父类构造函数中存在引用类型属性时，子类实例在修改了该属性之后，其余子类实例共享了该属性。第二个问题是在创建子类实例时，我们无法向父类传递参数。
 
-组合寄生继承
+
+
+#### 构造函数继承
+
+``` javascript
+function A(text){
+  this.text = text;
+  this.arr = ['a', 'b', 'c']
+}
+
+A.prototype.sayHello = function(){
+  console.log('hello')
+}
+function B(text){
+  A.call(this, text);
+}
+const b1 = new B('hello world');
+const b2 = new B('goodbye');
+b1.arr.push('d');
+console.log(b1.text); // hello worle
+console.log(b2.arr); // [ 'a', 'b', 'c' ]
+console.log(b1.sayHello()); // TypeError: b1.sayHello is not a function
+```
+
+使用构造函数继承可以解决原型链继承的两个问题（无法向父类传参和子类实例共享父类引用类型属性），它的缺点就是无法继承父类原型上的属性和方法。如果要继承父类方法，只能把方法写在构造函数里面。
+
+
+
+#### 组合继承
+
+``` javascript
+function A(text){
+  this.text = text;
+  this.arr = [1,2];
+}
+A.prototype.sayHello = function(){
+  console.log('hello')
+}
+
+function B(text, num){
+  A.call(this,text);
+  this.num = num;
+}
+B.prototype = new A();
+
+const b1 = new B('aa', 18);
+const b2 = new B('cc', 20);
+b1.arr.push(3);
+console.log(b2.arr);
+b1.sayHello();
+
+```
+
+组合继承就是结合上述的两种方式。组合继承的缺点就是会调用两次父类构造函数。一次是`B.prototype = new A()`，另一次是`A.call(this, text)`。我们发现`B.prototype = new A()`这次调用，仅仅是为了拿到父类原型上的属性和方法，针对这个进行优化，有了组合寄生继承。
+![](./shortcut/js/prototype/1.png)
+
+可以看到原型链上仍存在父类的属性。
+
+#### 组合寄生继承
+
+```diff
+function A(text){
+  this.text = text;
+  this.arr = [1,2];
+}
+A.prototype.sayHello = function(){
+  console.log('hello')
+}
+
+function B(text, num){
+  A.call(this,text);
+  this.num = num;
+}
+
++ function F(){}
++ F.prototype = A.prototype;
++ B.prototype = new F();
++ B.prototype.constructor = B;
+
+const b = new B();
+```
+
+核心的思想是上述变更。
+![](../shortcut/js/prototype/2.png)
+
+可以看到原型上已经没有了父类构造函数的属性值，但是多了一层`__proto__`。
+
+在上面的变更中，我们看到的代码会很熟悉，因为这就是我们之前模拟实现的`Object.create()`的代码，所以我们可以直接用`Object.create()`来代替，有因为我们中间做了这层原型的指向更改，所以我们需要重新指明`constructor`。最后代码为：
+
+``` javascript
+function A(text){
+  this.text = text;
+  this.arr = [1,2];
+}
+A.prototype.sayHello = function(){
+  console.log('hello')
+}
+
+function B(text, num){
+  A.call(this,text);
+  this.num = num;
+}
+
+B.prototype = Object.create(A.prototype);
+B.prototype.constructor = B;
+```
 
 
 
@@ -358,6 +503,24 @@ a1.sayHi(); // hi
 class A{}
 console.log(typeof A); // function
 ```
+
+``` javascript
+class A {
+    constructor(name) {
+        this.name = name;
+    }
+}
+
+class B extends A {
+    constructor(name, age) {
+        super(name);
+        this.age = age;
+    }
+}
+
+const b = new B("hello", 18);
+```
+如果子类extends父类了，那在子类的constructor中必须要调用super，super方法为调用父类的构造函数，我觉得可以理解为对一个es5原型继承中的`父类.call`的形式。
 
 
 
