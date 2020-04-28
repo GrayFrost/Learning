@@ -332,7 +332,8 @@ Object.assign(A.prototype, {
 a1.sayHi(); // hi
 ```
 
-![http://www.mollypages.org/tutorials/js.mp](../shortcut/js/prototype/3.jpg)
+![http://www.mollypages.org/tutorials/js.mp](../shortcut/js/prototype/3.jpg)  
+
 最后，贴上这张经典的图。然后我们分析一遍。
 ``` javascript
 // 构造函数Foo
