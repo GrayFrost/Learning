@@ -441,7 +441,7 @@ b1.sayHello();
 ```
 
 组合继承就是结合上述的两种方式。组合继承的缺点就是会调用两次父类构造函数。一次是`B.prototype = new A()`，另一次是`A.call(this, text)`。我们发现`B.prototype = new A()`这次调用，仅仅是为了拿到父类原型上的属性和方法，针对这个进行优化，有了组合寄生继承。
-![](./shortcut/js/prototype/1.png)
+![](../shortcut/js/prototype/1.png)
 
 可以看到原型链上仍存在父类的属性。
 

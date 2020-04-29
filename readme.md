@@ -33,7 +33,6 @@
 
 ## 代码实现
 
-* 继承
 * 柯里化
 * 深拷贝
 * 数组去重
@@ -45,9 +44,9 @@
 * 大数相乘
 * 模板引擎
 * EventEmitter
-* Promise
 * JSON.stringify和JSON.parse
 * 懒加载
+* compose
 
 
 ## CSS
