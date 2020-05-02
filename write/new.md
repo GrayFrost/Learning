@@ -51,7 +51,7 @@ person2实例输出如下
 
 ``` javascript
 function myNew(Con, ...args) {
-    let obj = new Object();
+    let obj = {};
     obj.__proto__ = Con.prototype;
     let result = Con.apply(obj, args);
     return typeof result === 'object' ? result : obj;

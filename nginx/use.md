@@ -60,3 +60,17 @@ nginx -t 检测语法是否正确
 vi /usr/local/etc/nginx/nginx.conf
 ```
 
+## 正向代理
+
+## 反向代理
+
+## 负载均衡
+
+
+
+
+
+
+
+
+
