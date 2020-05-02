@@ -35,9 +35,9 @@
 
 * 柯里化
 * 深拷贝
-* 数组去重
 * [new](./write/new.md)
 * [instanceof](./write/instanceof.md)
+* [LazyMan](./write/lazyman.md)
 * call、apply、bind
 * 处理url
 * 数字千分位
