@@ -1,5 +1,5 @@
 # this
-
+在es5中，this 永远指向最后调用它的那个对象
 this的绑定有四种规则。
 
 ## 默认
@@ -48,6 +48,8 @@ let obj = {
 obj.say(); // obj
 foo(obj.say); // global
 ```
+上面的例子也可以和隐式绑定丢失联系起来。
+
 又发现个有意思的事，如果改成
 ``` diff
 + let text = 'global';
@@ -131,19 +133,86 @@ say.call(obj);
 如果你把null或者undefined作为this的绑定对象传入call/apply/bind，这些值会在调用时被忽略，实际应用的是默认绑定规则
 
 ### apply
+与call差不多啦。
 
 ### bind
+bind() 的作用是将当前函数与指定的对象绑定，并返回一个新函数，这个新函数无论以什么样的方式调用，其 this 始终指向绑定的对象
+``` javascript
+var obj = {
+  text: 'obj'
+}
+function foo() {
+    console.log(this.text)
+}
+const fn = foo.bind(obj);
+
+var obj2= {
+  text: 'obj2'
+}
+fn.call(obj2); // obj
+```
 
 ## new
 [new的规则](../write/new.md)
 ``` javascript
+function Person(name) {
+    this.name = name;
+}
+const obj = new Person("hello");
+console.log(obj.name); // hello
 ```
 
 ## 绑定优先级
 new > 显示 > 隐式 > 默认
 
-## 箭头函数
+``` javascript
+var a = 'global';
 
+function say(){
+  console.log(this.a)
+}
+
+var obj = {
+  a: 'obj',
+  say: say
+}
+var obj2 = {
+  a: 'obj2',
+  say: say
+}
+
+obj.say(); // obj
+obj2.say(); // obj2
+
+obj.say.call(obj2); // obj2
+obj2.say.call(obj); // obj
+```
+
+ new和call/apply不能同时使用
+ 如果你传递null或undefined作为call，apply或bind的this绑定参数，那么这些值会被忽略掉，取而代之的是 默认绑定 规则将适用于这个调用
+
+## 箭头函数
+箭头函数没有自己的 this 绑定 ，this 绑定的是最近一层非箭头函数的 this
+``` javascript
+var text = "global";
+
+var obj = {
+    text: "obj",
+    say: function () {
+        console.log(this.text);
+    },
+};
+
+var obj2 = {
+    text: "obj2",
+    say: () => {
+        console.log(this.text);
+    },
+};
+obj.say(); // obj
+obj2.say(); // global
+
+```
 ## 题目
 ``` javascript
 var length = 10;
@@ -164,3 +233,72 @@ obj.method(fn, 1);
 ```
 第一个输出10，符合函数中传递参数的情况，this指向全局。
 第二个输出2有点难理解。arguments为[fn, 1]，arguments是一个类数组，也是一个对象，可看成arguments.fn()，所以this指向了arguments。
+
+``` javascript
+var text = "global";
+
+let obj = {
+    text: "obj",
+    foo: function () {
+        console.log(this.text);
+    },
+    bar: function () {
+        setTimeout(function () {
+            this.foo();
+        }, 0);
+    },
+};
+obj.bar(); // Uncaught TypeError: this.foo is not a function
+```
+
+``` javascript
+var text = "global";
+
+let obj = {
+    text: "obj",
+    foo: function () {
+        console.log(this.text);
+    },
+    bar: function () {
+        setTimeout(() => {
+            this.foo();
+        }, 0);
+    },
+};
+obj.bar(); // obj
+```
+
+``` javascript
+var text = "global";
+
+var obj = {
+    text: "obj",
+    foo: function () {
+        console.log(this.text);
+    },
+    bar: function () {
+        setTimeout(function(){
+            this.foo();
+        }.bind(obj), 0);
+    },
+};
+obj.bar();
+```
+当然还可以使用_this = this形式
+``` javascript
+var text = "global";
+
+var obj = {
+    text: "obj",
+    foo: function () {
+        console.log(this.text);
+    },
+    bar: function () {
+      var _this = this;
+        setTimeout(function(){
+            _this.foo();
+        }, 0);
+    },
+};
+obj.bar();
+```
