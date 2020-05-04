@@ -14,12 +14,7 @@
 * event loop
 * 垃圾回收
 * 隐式转换
-
-### ES6
-
-* 箭头函数
 * Promise
-* Class
 * Proxy
 
 ### 实践
@@ -92,6 +87,7 @@
 
 ### 原理
 
+* MVVM
 * 生命周期
 * 双向绑定
 * nextTick
@@ -167,7 +163,7 @@
 * [适配器模式](./design-pattern/adaptor-pattern.md)
 * [装饰者模式](./design-pattern/decorator-pattern.md)
 * 中介模式
-* 观察者模式
+* [观察者模式](./design-pattern/observer/pattern.md)
 * 代理模式
 
 ## 算法
