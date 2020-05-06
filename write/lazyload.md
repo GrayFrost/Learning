@@ -5,10 +5,14 @@
 整体流程是监听scroll滚动事件，当图片容器出现在视窗时，取出图片上的临时属性data-src（也可以其他data-*）的值赋给src。
 优化点是滚动节流，已加载的图片需要过滤，避免重复判断。
 
+## 概念
+首先需要了解一些宽高距离概念。
+### client
+* clientWidth 我们设置的宽
+* clientHeight 我们设置的高
+* clientLeft 我们设置的边框值
+* clientTop 我们设置的边框值
 
-client
-clientWidth clientHeight 我们设置的宽高
-clientLeft clientTop 我们设置的边框值
 ``` html
 <!DOCTYPE html>
 <html lang="en">
@@ -44,11 +48,11 @@ clientLeft clientTop 我们设置的边框值
 </html>
 ```
 
-offset
-offsetWidth 设置的宽加上边框
-offsetHeight 设置的高加上边框
-offsetLeft 获取自身左外边框到定位父级的左内边框的距离，注意定位这个词，是指设置了absolute或fixed的父级元素，没有则继续向上找
-offsetTop 获取自身上外边框到定位父级的上内边框的距离
+### offset
+* offsetWidth 设置的宽加上边框
+* offsetHeight 设置的高加上边框
+* offsetLeft 获取自身左外边框到定位父级的左内边框的距离，注意定位这个词，是指设置了absolute或fixed的父级元素，没有则继续向上找
+* offsetTop 获取自身上外边框到定位父级的上内边框的距离
 
 ``` html
 <!DOCTYPE html>
@@ -105,11 +109,11 @@ offsetTop 获取自身上外边框到定位父级的上内边框的距离
 </html>
 ```
 
-scroll
-scrollWidth
-scrollHeight
-scrollLeft
-scrollTop
+### scroll
+* scrollWidth 我们设置的宽加内边距（若内容超出，按超出内容宽决定）
+* scrollHeight 我们设置的高加内边距（若内容超出，按超出内容高决定）
+* scrollLeft 滚动条卷走的距离
+* scrollTop 滚动条卷走的距离
 
 ``` html
 <!DOCTYPE html>
@@ -189,6 +193,10 @@ scrollTop
 
 ```
 
+* document.documentElement.scrollHeight 获取body整个文档的高
+* document.documentElement.clientHeight 获取屏幕的高，即可视区域的高
+
+## 实现
 scroll [节流](../performance/debounce.md)
 
 getboundingclientrect
