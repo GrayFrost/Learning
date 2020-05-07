@@ -8,7 +8,7 @@
 
 * [原型](./js/prototype.md)
 * 闭包
-* [执行上下文](./js/context.md)
+* 执行上下文
 * [this](./js/this.md)
 * event loop
 * 垃圾回收
@@ -95,24 +95,8 @@
 ## Webpack
 
 ## 项目环境搭建
-搭建一个完整的react项目，在搭建过程中了解使用到的各种loader和plugin，以及对应配置
 
-### Loader
-
-* 常用loader
-* 实现loader
-
-### Plugins
-
-* 常用Plugins
-* 实现plugin
-
-### 其他
-
-* 热更新
-* Source-map
-
-### Babel
+[看这里](https://github.com/GrayFrost/Basic-Project)
 
 ## Http
 
