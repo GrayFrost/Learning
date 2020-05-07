@@ -266,3 +266,32 @@ function isInView(el){
 
 ### IntersectionObserver
 > IntersectionObserver接口提供了一种异步观察目标元素与祖先元素或顶级文档viewport的交集中的变化的方法。祖先元素与视窗viewport被称为根(root)  
+
+相关api
+```
+var io = new IntersectionObserver(callback, options);
+io.observe(DOM) // 观察dom对象
+io.unobserve(DOM) // 停止观察
+
+```
+
+``` javascript
+function selectImages(selector = ".lazy") {
+    let doms = document.querySelectorAll(selector);
+    return doms;
+}
+var io = new IntersectionObserver((entries, observe) => {
+    entries.forEach((entry) => {
+        if(entry.isIntersecting){
+            let targetImg = entry.target;
+            targetImg.src = targetImg.dataset.src;
+            io.unobserve(targetImg)
+        }
+    })
+}, {});
+let imgs = selectImages(".lazy");
+imgs.forEach((img) => {
+    io.observe(img);
+})
+```
+我已经会IntersectionObserver的相关api，这里不作过多介绍。后面有时间会写一篇博客介绍下相关Observer的使用。
