@@ -237,7 +237,7 @@ function isInView(el) {
 function loadImage() {
     let imgs = selectImages(".lazy");
     for (let i = n; i < imgs.length; i++) {
-        if (isInView2(imgs[i])) {
+        if (isInView(imgs[i])) {
             imgs[i].src = imgs[i].dataset.src;
             n++;
         }
@@ -274,7 +274,7 @@ io.observe(DOM) // 观察dom对象
 io.unobserve(DOM) // 停止观察
 
 ```
-
+摒弃掉我们之前的onscroll方法，使用IntersectionObserver有更好的性能。
 ``` javascript
 function selectImages(selector = ".lazy") {
     let doms = document.querySelectorAll(selector);
