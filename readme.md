@@ -8,19 +8,14 @@
 
 * [原型](./js/prototype.md)
 * 闭包
-* 执行上下文
-* 作用域
+* [执行上下文](./js/context.md)
 * [this](./js/this.md)
 * event loop
 * 垃圾回收
 * 隐式转换
 * Promise
 * Proxy
-
-### 实践
-
 * 文件上传
-* 输入url的过程
 * 函数式编程
 
 ### Typescript
@@ -28,7 +23,6 @@
 
 ## 代码实现
 
-* 柯里化
 * 深拷贝
 * [new](./write/new.md)
 * [instanceof](./write/instanceof.md)
@@ -41,7 +35,7 @@
 * EventEmitter
 * JSON.stringify和JSON.parse
 * 懒加载
-* compose
+* lodash _.get()
 
 
 ## CSS
@@ -137,7 +131,6 @@
 * XSS
 * CSRF
 * 跨域
-* npm包的安全
 
 ## 性能
 
@@ -150,6 +143,7 @@
 
 ## 数据结构
 
+* 数组
 * 栈
 * 队列
 * 链表
@@ -163,7 +157,7 @@
 * [适配器模式](./design-pattern/adaptor-pattern.md)
 * [装饰者模式](./design-pattern/decorator-pattern.md)
 * 中介模式
-* [观察者模式](./design-pattern/observer/pattern.md)
+* 观察者模式
 * 代理模式
 
 ## 算法
