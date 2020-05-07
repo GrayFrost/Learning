@@ -34,7 +34,7 @@
 * 模板引擎
 * EventEmitter
 * JSON.stringify和JSON.parse
-* 懒加载
+* [懒加载](./write/lazyload.md)
 * lodash _.get()
 
 

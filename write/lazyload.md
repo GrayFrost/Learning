@@ -197,8 +197,72 @@
 * document.documentElement.clientHeight 获取屏幕的高，即可视区域的高
 
 ## 实现
-scroll [节流](../performance/debounce.md)
+分为三种方式:
+* 原始
+* getBoundingClientRect
+* IntersectionObserver
 
-getboundingclientrect
+### 原始方式
 
-intersection observer
+``` javascript
+let n = 0;
+function selectImages(selector = ".lazy") {
+    let doms = document.querySelectorAll(selector);
+    return doms;
+}
+
+function throttle(func, delay) {
+    var prev = Date.now();
+    return function () {
+        var context = this;
+        var args = arguments;
+        var now = Date.now();
+        if (now - prev >= delay) {
+            func.apply(context, args);
+            prev = Date.now();
+        }
+    };
+}
+
+function isInView(el) {
+    let clientHeight = document.documentElement.clientHeight;
+    let scrollTop = document.documentElement.scrollTop;
+    if (el.offsetTop - scrollTop < clientHeight) {
+        return true;
+    }
+    return false;
+}
+
+
+function loadImage() {
+    let imgs = selectImages(".lazy");
+    for (let i = n; i < imgs.length; i++) {
+        if (isInView2(imgs[i])) {
+            imgs[i].src = imgs[i].dataset.src;
+            n++;
+        }
+    }
+}
+
+window.onscroll = throttle(loadImage, 1000);
+```
+对每个阶段性的函数都做了拆分，方便理解。可以看到关键性的方法有：获取图片dom，判断是否处于视窗，加载图片，滚动节流。
+除了使用了节流来优化，还记录了已加载的图片的index，方便下次滚动时不再重复执行已加载的图片。
+
+### getBoundingClientRect
+``` javascript
+function isInView(el){
+  const bound = el.getBoundingClientRect();
+  let clientHeight = document.documentElement.clientHeight;
+  return bound.top < clientHeight;
+}
+```
+因为我们拆分了功能性函数，上面的判断是否可见的方法替换成使用getBoundingClientRect就可以了。
+`getBoundingClientRect`返回一个对象，包含多个属性，我们先看其中四个top、right、buttom、left。
+* top 元素上边距离页面上边的距离
+* right 元素右边距离页面左边的距离
+* buttom 元素下边距离页面上边的距离
+* left 元素左边距离页面左边的距离
+
+### IntersectionObserver
+> IntersectionObserver接口提供了一种异步观察目标元素与祖先元素或顶级文档viewport的交集中的变化的方法。祖先元素与视窗viewport被称为根(root)  
