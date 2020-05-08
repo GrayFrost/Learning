@@ -27,7 +27,7 @@
 * [new](./write/new.md)
 * [instanceof](./write/instanceof.md)
 * [LazyMan](./write/lazyman.md)
-* call、apply、bind
+* [call、apply、bind](./write/call.md)
 * 处理url
 * 数字千分位
 * 大数相乘
