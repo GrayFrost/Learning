@@ -202,6 +202,48 @@
 * getBoundingClientRect
 * IntersectionObserver
 
+页面基本结构，图片数量自己控制，本次不写太多。
+``` html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>懒加载</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            .image-item {
+                display: block;
+                margin-bottom: 50px;
+                height: 500px;
+            }
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="image-item">
+            <img class="lazy" data-src="./0.jpg" />
+        </div>
+        <div class="image-item">
+            <img class="lazy" data-src="./1.jpg" />
+        </div>
+        <div class="image-item">
+            <img class="lazy" data-src="./2.jpg" />
+        </div>
+        <div class="image-item">
+            <img class="lazy" data-src="./3.jpg" />
+        </div>   
+    </body>
+</html>
+
+```
+
 ### 原始方式
 
 ``` javascript
