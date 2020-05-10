@@ -11,7 +11,7 @@
 * 执行上下文
 * [this](./js/this.md)
 * event loop
-* 垃圾回收
+* [垃圾回收](./js/garbage.md)
 * 隐式转换
 * Promise
 * Proxy
