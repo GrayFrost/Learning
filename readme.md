@@ -34,7 +34,6 @@
 * 模板引擎
 * EventEmitter
 * JSON.stringify和JSON.parse
-* [懒加载](./write/lazyload.md)
 * lodash _.get()
 
 
@@ -120,7 +119,7 @@
 
 * 节流、防抖
 * 按需加载
-* 懒加载
+* [懒加载](./write/lazyload.md)
 * 服务端渲染
 * 骨架屏
 * 虚拟列表
