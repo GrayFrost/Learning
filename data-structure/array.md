@@ -308,13 +308,78 @@ Math.max(...[1, 3, 2]);
 `Math.min`同理。
 
 ## map实现
+数组map的使用
+``` javascript
+array.map(function(currentValue,index,arr), thisValue)
+```
+比较需要注意的是map有第二个参数，用于指定回调函数的this指向。
+``` javascript
+Array.prototype.myMap = function(){
+  const newArr = [];
+  const [fn, thisArg] = [...arguments];
+  for(let i = 0, length = this.length; i < length; i++){
+    newArr[i] = fn.call(thisArg, this[i], i, this);
+  }
+  return newArr;
+}
+```
+
+``` javascript
+// 使用reduce实现
+Array.prototype.myMap2 = function(){
+  const [fn, thisArg] = [...arguments];
+  return this.reduce((prev, cur, index, arr) => {
+    prev.push(fn.call(thisArg, cur, index, arr));
+    return prev;
+  }, [])
+}
+```
+
+
+
+### filter实现
+
+数组filter的使用
+
+``` javascript
+array.filter(function(currentValue,index,arr), thisValue)
+```
+
+``` javascript
+Array.prototype.myFilter = function(){
+  const [fn, thisArg] = [...arguments];
+  const arr = [];
+  for(let i = 0, length = this.length; i < length; i++){
+    let meet = fn.call(thisArg, this[i], i, this);
+    if(meet){
+      arr.push(this[i]);
+    }
+  }
+  return arr;
+}
+```
+
+``` javascript
+Array.prototype.myFilter2 = function(){
+  const [fn, thisArg] = [...arguments];
+  return this.reduce((prev, cur, index, arr) => {
+    let meet = fn.call(thisArg, cur, index, arr);
+    if(meet){
+      prev.push(cur);
+    }
+    return prev;
+  }, [])
+}
+```
+
+
+
+当掌握了核心思想后，发现实现起来还是挺简单的
 
 ## reduce实现
 
 ## 扁平数据结构转化为Json数据结构
 在树结构章节，对应json数据结构转为扁平数据结构。
-
-
 
 ## 二维数组--矩阵
 
