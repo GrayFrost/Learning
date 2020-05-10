@@ -273,7 +273,7 @@ console.log(min); // 2
 
 
 
-###假设
+### 假设
 
 ``` javascript
 const arr = [5, 2, 3];
@@ -288,7 +288,7 @@ console.log(max); // 5
 
 假设第一项是最大的，然后逐个比较。最小值同理。
 
-###Math 
+### Math 
 
 > `Math.max()`函数返回一组数中的最大值  
 >

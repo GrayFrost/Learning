@@ -127,8 +127,8 @@
 
 ## 数据结构
 
-* 数组
-* 栈
+* [数组](./data-structure/array.md)
+* [栈](./data-structure/stack.md)
 * 队列
 * 链表
 * 树
