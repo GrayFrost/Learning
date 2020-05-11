@@ -93,8 +93,6 @@
 
 ## Webpack
 
-## 项目环境搭建
-
 [看这里](https://github.com/GrayFrost/Basic-Project)
 
 ## Http
@@ -145,10 +143,7 @@
 
 ## 算法
 
-* 排序算法
-* 动态规划
-* 贪心算法
-* 深度优先、广度优先
+[看这里](https://github.com/GrayFrost/learn-alg)
 
 ## Nginx
 
