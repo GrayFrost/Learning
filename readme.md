@@ -16,7 +16,8 @@
 * Promise
 * Proxy
 * 文件上传
-* 函数式编程
+* [函数式编程](./js/function.md)
+* 正则
 
 ### Typescript
 * [使用](./typescript/typescript.md)

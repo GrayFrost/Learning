@@ -3,3 +3,44 @@
 ## 柯里化
 
 ## compose
+
+首先我们举个例子，假设我们需要对两个数相加，然后将加完的和进行乘法运算，最后将进行乘法后的值进行字符串拼接。
+``` javascript
+function add(num1, num2) {
+    return num1 + num2;
+}
+
+function multi(num) {
+    return num * num;
+}
+
+function toStr(num) {
+    return num + " Hello world";
+}
+```
+我们将每个功能函数拆分，拆成三个模块。通常我们的调用方式如下
+``` javascript
+let str = toStr(multi(add(1,2))); // 9 Hello world
+```
+我们发现这种调用方式的缺点就是，如果函数多了，就会有一层层的嵌套。针对这种下一个调用函数的入参依赖上一个函数出参的调用方式，我们可以使用compose解决。compose函数可以将嵌套执行的函数进行平铺。
+我先按照我的理解写一个
+``` javascript
+function compose(...funcs) {
+    return function (...args) {
+        return funcs.reduce((res, fn) => {
+            return typeof res === 'function' ? fn(res(...args)) : fn(res)
+        });
+    };
+}
+```
+compose函数接收的是一系列方法作为参数，然后返回一个函数，这个函数接收最开始需要计算的参数值。然后内部使用reduce来执行一系列的参数，因为没有默认值，第一次的时候，reducce回调函数的第一个参数是一个函数，此后的迭代才是一个值。当然这只是compose实现的一种思路。  
+如果需要按照网上说的从右往左执行，改成reduceRight就可以
+
+``` javascript
+let str = compose(add, multi, toStr)(1, 2); // 9 Hello world
+```
+
+redux里的compose实现起来就很精巧
+``` javascript
+```
+
