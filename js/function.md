@@ -40,6 +40,24 @@ compose函数接收的是一系列方法作为参数，然后返回一个函数�
 let str = compose(add, multi, toStr)(1, 2); // 9 Hello world
 ```
 
+看一题面试题：将数组扁平化并去除其中重复数据，最终得到一个升序且不重复的数组
+``` javascript
+function unique(arr) {
+    return [...new Set(arr)];
+}
+function flatten(arr) {
+    return arr.reduce((prev, cur) => {
+        Array.isArray(cur) ? prev.concat(flatten(cur)) : prev.push(cur);
+        return prev;
+    }, []);
+}
+function sort(arr) {
+    return arr.sort((a, b) => a - b);
+}
+
+let arr = compose(flatten, unique, sort)([1, 5, 7, 5, 8, 3, 8, 2, 9, 6]);
+```
+
 redux里的compose实现起来就很精巧
 ``` javascript
 ```
