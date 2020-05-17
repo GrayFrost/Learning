@@ -25,6 +25,7 @@
 ## 代码实现
 
 * 深拷贝
+* [节流、防抖](./write/debounce.md)
 * [new](./write/new.md)
 * [instanceof](./write/instanceof.md)
 * [LazyMan](./write/lazyman.md)
@@ -116,7 +117,6 @@
 
 ## 性能
 
-* 节流、防抖
 * 按需加载
 * [懒加载](./write/lazyload.md)
 * 服务端渲染
