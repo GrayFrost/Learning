@@ -1,6 +1,30 @@
 # 函数式编程
 
 ## 柯里化
+``` javascript
+function curry(fn){
+  let argArr = [];
+  return function F(...args){
+    if(argArr.length >= fn.length){
+      fn.apply(this, argArr);
+    }else{
+      argArr = [...argArr, ...args];
+      return F;
+    }
+  }
+}
+```
+核心思想是闭包存储变量的数量，然后通过与函数的length来比较，function.length可以拿到参数的数量。达到原始函数的变量数量时，再调用函数，否则返回一个函数，继续接收参数。
+
+``` javascript
+function add(a, b, c){
+  console.log(a + b + c);
+}
+
+let myAdd = curry(add);
+myAdd(1)(2)(3)();
+```
+没想到现在的我也能够写出个简单的来了，开心。
 
 ## compose
 
