@@ -47,6 +47,31 @@ JSON.parse(JSON.stringify())
 * 判断传入的参数是否是引用类型
 * 引用类型数据有对象和数组，需要区分
 * 处理循环引用的问题
+``` javascript
+function deepClone(source, hash = new WeakMap()) {
+    if (!isObject(source)) {
+        return source;
+    }
+    if (hash.has(source)) {
+        return hash.get(source);
+    }
+    let target = Array.isArray(source) ? [] : {};
+    hash.set(source, target);
+    for (let key in source) {
+        target[key] = isObject(source[key])
+            ? deepClone(source[key], hash)
+            : source[key];
+    }
+    return target;
+}
+
+function isObject(obj) {
+    return Object.prototype.toString.call(obj) === "[object Object]";
+}
+```
+当然还有其他一些优化点：
+* 递归爆栈
+* Symbol处理
 
 ### 深度优先
 
