@@ -24,7 +24,7 @@
 
 ## 代码实现
 
-* 深拷贝
+* [深拷贝](./write/clone.md)
 * [节流、防抖](./write/debounce.md)
 * [new](./write/new.md)
 * [instanceof](./write/instanceof.md)
