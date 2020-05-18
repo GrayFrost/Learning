@@ -5,10 +5,10 @@
 function curry(fn){
   let argArr = [];
   return function F(...args){
+    argArr = [...argArr, ...args]
     if(argArr.length >= fn.length){
       fn.apply(this, argArr);
     }else{
-      argArr = [...argArr, ...args];
       return F;
     }
   }
@@ -22,7 +22,7 @@ function add(a, b, c){
 }
 
 let myAdd = curry(add);
-myAdd(1)(2)(3)();
+myAdd(1)(2)(3);
 ```
 没想到现在的我也能够写出个简单的来了，开心。
 
