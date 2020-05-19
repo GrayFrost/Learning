@@ -1,5 +1,11 @@
 # http缓存
 
+## 存储位置
+service worker
+memory cache
+disk cache
+push cache
+
 ## 强缓存
 expire
 cache-control
