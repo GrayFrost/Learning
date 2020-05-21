@@ -7,8 +7,10 @@ disk cache
 push cache
 
 ## 强缓存
-expire
+expires 返回GMT时间
+
 cache-control
+cache-control的值
 
 ## 协商缓存
 last-modified if-modified-since
