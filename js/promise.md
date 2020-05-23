@@ -2,6 +2,9 @@
 
 ## 实现
 
+race
+all
+
 ## 题目
 
 ### 按顺序执行promise
@@ -44,3 +47,5 @@ showAction([action1, action2, action3]).then(() => {
 })
 ```
 按顺序执行promise的核心思想就是嵌套promise，然后调用then。简洁的写法就是使用数组的reduce方法。
+
+### 控制并发数

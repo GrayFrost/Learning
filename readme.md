@@ -100,6 +100,7 @@
 ## Http
 
 * [缓存](./http/cache.md)
+* [状态码](./http/code.md)
 * 三次握手、四次挥手
 * https
 * http2
