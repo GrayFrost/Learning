@@ -104,10 +104,10 @@
 * 三次握手、四次挥手
 * https
 * http2
-* TCP、UDP
+* [TCP、UDP](./http/tcp.md)
 * DNS
+* 跨域
 * WebSocket
-* ajax、fetch、axios
 * 抓包工具
 
 ## 安全
