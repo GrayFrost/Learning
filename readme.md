@@ -128,9 +128,9 @@
 
 * [数组](./data-structure/array.md)
 * [栈](./data-structure/stack.md)
-* 队列
-* 链表
-* 树
+* [队列](./data-structure/queue.md)
+* [链表](./data-structure/linkedList.md)
+* [树](./data-structure/tree.md)
 
 ## 设计模式
 
