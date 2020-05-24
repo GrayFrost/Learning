@@ -178,7 +178,4 @@
 * Antd
 * Element-UI
 
-## 思维导图
-
-![思维导图](./shortcut/Front-End4.png)
 
