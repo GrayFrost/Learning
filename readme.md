@@ -101,6 +101,7 @@
 
 * [缓存](./http/cache.md)
 * [状态码](./http/code.md)
+* [get和post的区别](./http/get.md)
 * 三次握手、四次挥手
 * https
 * http2
