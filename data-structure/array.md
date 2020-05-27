@@ -377,7 +377,25 @@ Array.prototype.myFilter2 = function(){
 当掌握了核心思想后，发现实现起来还是挺简单的
 
 ## reduce实现
-
+``` javascript
+Array.prototype.myReduce = function(callback, init){
+  const arr = this;
+  let res;
+  let startIndex = 0;
+  if(init){
+    res = init;
+  }else{
+    res = arr[0];
+    startIndex = 1;
+  }
+  
+  for(let i = startIndex; i < arr.length; i++){
+    res = callback.call(null, res, arr[i], i, arr);
+  }
+  return res;
+}
+```
+当reduce没有有初始值时，从数组第一项中取值作为初始值。
 
 ## 二维数组
 
