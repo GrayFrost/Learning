@@ -43,7 +43,7 @@
 
 * BFC
 * [三栏布局](./css/layout.md)
-* Flex
+* [Flex](./css/flex.md)
 * Grid
 * 预处理器
 * 移动端适配
