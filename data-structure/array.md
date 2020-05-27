@@ -378,8 +378,6 @@ Array.prototype.myFilter2 = function(){
 
 ## reduce实现
 
-## 扁平数据结构转化为Json数据结构
-在树结构章节，对应json数据结构转为扁平数据结构。
 
 ## 二维数组
 
