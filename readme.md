@@ -8,7 +8,7 @@
 
 * [原型](./js/prototype.md)
 * 闭包
-* 执行上下文
+* [执行上下文](./js/context.md)
 * [this](./js/this.md)
 * event loop
 * [垃圾回收](./js/garbage.md)
