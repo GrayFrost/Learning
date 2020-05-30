@@ -1,18 +1,17 @@
 # 前端学习
 
-认清现实，努力学习。。。
+加油呐，努力学习。。。
 
 ## Javascript
 
 ### 原理
 
 * [原型](./js/prototype.md)
-* 闭包
 * [执行上下文](./js/context.md)
 * [this](./js/this.md)
 * event loop
 * [垃圾回收](./js/garbage.md)
-* 隐式转换
+* [隐式转换](./js/type.md)
 * Promise
 * Proxy
 * 文件上传
