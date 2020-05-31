@@ -11,7 +11,7 @@
 * [this](./js/this.md)
 * event loop
 * [垃圾回收](./js/garbage.md)
-* [隐式转换](./js/type.md)
+* [类型转换](./js/type.md)
 * Promise
 * Proxy
 * 文件上传
