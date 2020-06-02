@@ -16,6 +16,7 @@
 * Proxy
 * 文件上传
 * [函数式编程](./js/function.md)
+* [路由](./js/router.md)
 * 正则
 
 ### Typescript
@@ -64,9 +65,8 @@
 * [hooks](./react/hooks.md)
 * Virtual Dom
 * Diff
+* 合成事件
 * [React Fiber](./react/fiber.md)
-
-### React-Router
 
 * 实现
 
@@ -87,8 +87,6 @@
 * nextTick
 * watch、computed
 * Vue3
-
-### Vue-Router
 
 ### Vuex
 
@@ -171,5 +169,6 @@
 * 链表
 * 树
 * fiber
+* 路由
 
 
