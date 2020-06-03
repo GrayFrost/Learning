@@ -163,20 +163,17 @@ Boolean()
 | String       | Date对象返回GMT格式字符串<br />函数、class、正则返回源代码的字符串;<br />数组返回join(',')格式的字符串<br />大多数对象转成"[object 类型]"格式 |
 | Boolean      | true                                                         |
 
-
+![](../shortcut/js/type/1.png)
 
 ## 题目
 
-通常涉及到隐式转换的运算无非是`+`和`==`。
-valueOf toString
+注意在console.log中和控制台中打印不同。
 []+[]
 {}+{}
 []+{}
 {}+[]
 
-==
-Object.prototype.toString
-
+### a == 1 && a == 2 && a == 3
  a 在什么情况下会打印 1
 ```
 var a = ?;
