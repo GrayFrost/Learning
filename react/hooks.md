@@ -349,8 +349,10 @@ export default function DebugDemo() {
 我们自定义了一个hooks，主要是在更改count状态时，监测状态是否超出我们设置的值。当我们查看控制台时，可看到
 ![](../shortcut/react/useDebugValue.png)
 
-## 自定义
+## 原理
+闭包
+链表
 
-## 第三方库
-### @umi/hooks
-查看一些hooks的实现
+## 问题
+使用时注意：循环、条件判断、函数嵌套
+useEffect闭包陷阱

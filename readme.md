@@ -36,7 +36,7 @@
 * 模板引擎
 * EventEmitter
 * JSON.stringify和JSON.parse
-* lodash _.get()
+* [lodash的get](./write/lodashGet.md)
 
 
 ## CSS
@@ -66,13 +66,14 @@
 * Virtual Dom
 * Diff
 * 合成事件
+* 高阶组件
 * [React Fiber](./react/fiber.md)
-
-* 实现
 
 ### Redux
 
 * 实现
+* react-redux
+* applymiddleware
 * Redux-thunk
 * Redux-saga
 * 中间件
