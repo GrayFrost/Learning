@@ -9,7 +9,7 @@
 * [原型](./js/prototype.md)
 * [执行上下文](./js/context.md)
 * [this](./js/this.md)
-* event loop
+* [event loop](./js/event-loop.md)
 * [垃圾回收](./js/garbage.md)
 * [类型转换](./js/type.md)
 * Promise
