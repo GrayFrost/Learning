@@ -30,7 +30,7 @@
 * [instanceof](./write/instanceof.md)
 * [LazyMan](./write/lazyman.md)
 * [call、apply、bind](./write/call.md)
-* 处理url
+* [解析url](./write/url-params.md)
 * 数字千分位
 * 大数相乘
 * 模板引擎
