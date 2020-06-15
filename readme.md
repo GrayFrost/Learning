@@ -12,7 +12,7 @@
 * [event loop](./js/event-loop.md)
 * [垃圾回收](./js/garbage.md)
 * [类型转换](./js/type.md)
-* Promise
+* [Promise](./js/promise.md)
 * Proxy
 * 文件上传
 * [函数式编程](./js/function.md)
@@ -33,7 +33,7 @@
 * [解析url](./write/url-params.md)
 * 数字千分位
 * 大数相乘
-* 模板引擎
+* [模板引擎](./write/template.md)
 * EventEmitter
 * JSON.stringify和JSON.parse
 * [lodash的get](./write/lodashGet.md)

@@ -52,38 +52,7 @@ window.addEventListener('popstate', callback)
       <li><a href="/home">home</a></li>
       <li><a href="/about">about</a></li>
   </ul>
-  <div id="routeView"></div>
-  <script>
-      window.addEventListener("DOMContentLoaded", onLoad);
-      window.addEventListener("popstate", onPopState);
-      var routeView = null;
-      function onLoad() {
-          routeView = document.querySelector("#routeView");
-          onPopState();
-
-          var linkList = document.querySelectorAll("a[href]");
-          linkList.forEach((el) =>
-              el.addEventListener("click", function (e) {
-                  e.preventDefault();
-                  history.pushState(null, "", el.getAttribute("href"));
-                  onPopState();
-              })
-          );
-      }
-      function onPopState() {
-          switch (location.pathname) {
-              case "/home":
-                  routeView.innerHTML = "home";
-                  break;
-              case "/about":
-                  routeView.innerHTML = "about";
-                  break;
-              default:
-                  routeView.innerHTML = "home";
-                  break;
-          }
-      }
-  </script>
+  <div id="content"></div>
 </body>
 ```
 
