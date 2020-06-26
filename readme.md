@@ -59,24 +59,13 @@
 
 ## React
 
-### 原理
-
 * [生命周期](./react/life-circle.md)
 * [hooks](./react/hooks.md)
-* Virtual Dom
-* Diff
+* [Diff](./react/diff.md)
 * 合成事件
 * 高阶组件
 * [React Fiber](./react/fiber.md)
-
-### Redux
-
-* 实现
-* react-redux
-* applymiddleware
-* Redux-thunk
-* Redux-saga
-* 中间件
+* [redux](./react/redux.md)
 
 ## Vue
 
@@ -100,7 +89,7 @@
 * [缓存](./http/cache.md)
 * [状态码](./http/code.md)
 * [get和post的区别](./http/get.md)
-* [三次握手、四次挥手](./http/shakeHand.md)
+* [三次握手与四次挥手](./http/shakeHand.md)
 * [https](./http/https.md)
 * http2
 * [TCP、UDP](./http/tcp.md)
@@ -162,14 +151,8 @@
 
 
 ## 已完成部分，待继续的内容
-* hooks
-* 三次握手
 * https
 * 数组
-* 队列
-* 链表
 * 树
-* fiber
-* 路由
 
 
