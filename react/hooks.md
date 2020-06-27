@@ -152,6 +152,55 @@ export default function ContextDemo() {
 注意：Provider还是要写的，而且当context值变化时，使用了useContext的组件会重新渲染，需要进行合理的优化。
 
 ## useReducer
+``` javascript
+const [state, dispatch] = useReducer(reducer, initialState);
+```
+可以配合useContext实现小型的redux状态管理功能。useState的底层代码是依赖于useReducer的，相当于useReducer的语法糖。
+用法：
+``` javascript
+function HooksTest() {
+    const [myStore, dispatch] = useReducer(
+        (state, action) => {
+            switch (action.type) {
+                case "add":
+                    return {
+                        ...state,
+                        count: state.count + 1,
+                    };
+                case "sub":
+                    return {
+                        ...state,
+                        count: state.count - 1,
+                    };
+                default:
+                    return state;
+            }
+        },
+        {
+            count: 0,
+        }
+    );
+    return (
+        <section>
+            <h1>counter: {myStore.count}</h1>
+            <button
+                onClick={() => {
+                    dispatch({ type: "add" });
+                }}
+            >
+                add
+            </button>
+            <button
+                onClick={() => {
+                    dispatch({ type: "sub" });
+                }}
+            >
+                sub
+            </button>
+        </section>
+    );
+}
+```
 ## useCallback
 首先我们来看一个例子：  
 ``` javascript
@@ -315,6 +364,11 @@ export default function MemoDemo() {
 
 
 ## useRef
+``` javascript
+const refObj = useRef(initialValue);
+```
+useRef会在每次渲染时返回同一个ref对象。通常可以用来存储一些不想引起页面重新渲染的数据
+
 ## useImperativeHandle
 ## useLayoutEffect
 * 与`useEffect`的区别
