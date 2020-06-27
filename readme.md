@@ -100,9 +100,8 @@
 
 ## 安全
 
-* XSS
-* CSRF
-* 跨域
+* [XSS](./security/xss.md)
+* [CSRF](./security/csrf.md)
 
 ## 性能
 
