@@ -370,6 +370,8 @@ const refObj = useRef(initialValue);
 useRef会在每次渲染时返回同一个ref对象。通常可以用来存储一些不想引起页面重新渲染的数据
 
 ## useImperativeHandle
+控制子组件暴露给父组件的属性，配合forwardRef使用。
+
 ## useLayoutEffect
 * 与`useEffect`的区别
 ## useDebugValue
