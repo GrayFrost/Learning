@@ -32,7 +32,7 @@
 * [call、apply、bind](./write/call.md)
 * [解析url](./write/url-params.md)
 * 数字千分位
-* 大数相乘
+* [大数相加](./write/num.md)
 * [模板引擎](./write/template.md)
 * EventEmitter
 * JSON.stringify和JSON.parse
