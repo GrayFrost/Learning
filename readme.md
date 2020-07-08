@@ -93,6 +93,7 @@
 * [https](./http/https.md)
 * http2
 * [TCP、UDP](./http/tcp.md)
+* [CDN](./http/cdn.md)
 * DNS
 * 跨域
 * WebSocket
