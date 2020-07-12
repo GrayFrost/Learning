@@ -31,7 +31,7 @@
 * [LazyMan](./write/lazyman.md)
 * [call、apply、bind](./write/call.md)
 * [解析url](./write/url-params.md)
-* 数字千分位
+* [数字千分位](./write/thousand.md)
 * [大数相加](./write/num.md)
 * [模板引擎](./write/template.md)
 * EventEmitter
